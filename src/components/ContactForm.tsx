@@ -16,26 +16,33 @@ export function ContactForm() {
     setFormStatus('idle');
 
     try {
-      // Netlify Forms を使用して送信
+      // フォーム要素を取得
       const form = e.target as HTMLFormElement;
+      
+      // フォームデータを送信
       const formData = new FormData(form);
       
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as unknown as Record<string, string>).toString()
-      });
-      
-      if (response.ok) {
-        setFormStatus('success');
-        setFormData({ name: '', contact: '', message: '' });
-      } else {
-        setFormStatus('error');
-      }
+      // Netlifyのフォーム送信エンドポイントに送信
+      fetch("/", {
+        method: "POST",
+        body: formData
+      })
+        .then(() => {
+          // 成功時の処理
+          setFormStatus('success');
+          setFormData({ name: '', contact: '', message: '' });
+        })
+        .catch(error => {
+          // エラー時の処理
+          console.error('送信エラー:', error);
+          setFormStatus('error');
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
     } catch (error) {
       console.error('送信エラー:', error);
       setFormStatus('error');
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -60,10 +67,13 @@ export function ContactForm() {
         <form
           name="contact"
           method="POST"
+          action="/"
           data-netlify="true"
+          netlify-honeypot="bot-field"
           onSubmit={handleSubmit}
           className="bg-white p-6 rounded-lg shadow-md space-y-6"
         >
+          <input type="hidden" name="bot-field" />
           <input type="hidden" name="form-name" value="contact" />
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
