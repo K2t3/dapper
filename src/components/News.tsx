@@ -121,7 +121,7 @@ export function News() {
               )}
               
               <div className="prose max-w-none">
-                <p className="text-gray-700 whitespace-pre-wrap">{selectedNews.content}</p>
+                <p className="text-gray-700 whitespace-pre-line">{selectedNews.content}</p>
               </div>
             </div>
           </div>
