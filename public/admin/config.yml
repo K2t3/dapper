@@ -1,0 +1,39 @@
+backend:
+  name: git-gateway
+  branch: master # GitHubのブランチ名
+
+# Netlify Identityを使用する場合
+# identity_url: "https://mrdapper.netlify.app/.netlify/identity"
+# gateway_url: "https://mrdapper.netlify.app/.netlify/git"
+
+# メディアファイルの保存先
+media_folder: "public/uploads" # メディアファイルが保存されるパス
+public_folder: "/uploads" # URLから参照する際のパス
+
+# 管理画面の言語設定
+locale: 'ja'
+
+# コレクション（コンテンツタイプ）の定義
+collections:
+  - name: "news" # APIで使用する名前
+    label: "ニュース" # 管理画面に表示される名前
+    folder: "content/news" # コンテンツが保存されるフォルダ
+    create: true # 新しいエントリの作成を許可
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # ファイル名のパターン
+    fields: # フィールドの定義
+      - {label: "日付", name: "date", widget: "datetime", format: "YYYY年MM月DD日", date_format: "YYYY年MM月DD日", time_format: false}
+      - {label: "タイトル", name: "title", widget: "string"}
+      - {label: "内容", name: "content", widget: "text"}
+      - {label: "画像", name: "image", widget: "image"}
+      - {label: "公開", name: "published", widget: "boolean", default: true}
+
+  - name: "gallery" # APIで使用する名前
+    label: "ギャラリー" # 管理画面に表示される名前
+    folder: "content/gallery" # コンテンツが保存されるフォルダ
+    create: true # 新しいエントリの作成を許可
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # ファイル名のパターン
+    fields: # フィールドの定義
+      - {label: "タイトル", name: "title", widget: "string"}
+      - {label: "画像", name: "url", widget: "image"}
+      - {label: "代替テキスト", name: "alt", widget: "string"}
+      - {label: "公開", name: "published", widget: "boolean", default: true}
