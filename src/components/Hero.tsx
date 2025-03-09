@@ -2,6 +2,13 @@ import React from 'react';
 import { siteConfig } from '../config/siteConfig';
 
 export function Hero() {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactForm = document.getElementById('contact');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div className="relative h-[500px] overflow-hidden">
       <img
@@ -18,6 +25,7 @@ export function Hero() {
             </h2>
             <a
               href="#contact"
+              onClick={scrollToContact}
               className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg text-lg transition-colors duration-300"
             >
               体験レッスンを予約する
