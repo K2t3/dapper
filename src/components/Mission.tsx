@@ -128,11 +128,11 @@ export function Mission() {
         </div>
 
         {/* Closing Message */}
-        <div className="text-center mt-12 py-6">
-          <p className="text-xl md:text-2xl font-bold text-blue-700 tracking-wide mb-2">
+        <div className="text-center my-20 py-16 px-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-sm transform hover:scale-105 transition-all duration-500 hover:shadow-lg">
+          <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-700 tracking-wide mb-4 transform transition-all duration-500 hover:text-blue-800">
             Unlocking Potential, Opening Worlds.
           </p>
-          <p className="text-lg text-gray-700 font-medium tracking-wider">
+          <p className="text-xl md:text-2xl text-gray-700 font-medium tracking-wider transform transition-all duration-500">
             無限の可能性、新たな世界への扉がきっと。
           </p>
         </div>
