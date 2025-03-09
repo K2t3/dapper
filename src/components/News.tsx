@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getNewsItems, NewsItem } from '../utils/content';
+import { X } from 'lucide-react';
 
 export function News() {
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedNews, setSelectedNews] = useState<NewsItem | null>(null);
 
   useEffect(() => {
     async function loadNewsItems() {
@@ -66,7 +68,10 @@ export function News() {
                     <p className="text-sm text-gray-500 mb-1">{item.date}</p>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
                     <p className="text-gray-600">{item.content}</p>
-                    <button className="mt-4 text-blue-600 hover:text-blue-800 transition-colors">
+                    <button
+                      onClick={() => setSelectedNews(item)}
+                      className="mt-4 text-blue-600 hover:text-blue-800 transition-colors"
+                    >
                       詳しく見る →
                     </button>
                   </div>
@@ -76,6 +81,42 @@ export function News() {
           </div>
         )}
       </div>
+
+      {/* ニュース詳細モーダル */}
+      {selectedNews && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-4">
+                <div>
+                  <p className="text-sm text-gray-500">{selectedNews.date}</p>
+                  <h2 className="text-2xl font-bold text-gray-800">{selectedNews.title}</h2>
+                </div>
+                <button
+                  onClick={() => setSelectedNews(null)}
+                  className="text-gray-500 hover:text-gray-700"
+                >
+                  <X className="h-6 w-6" />
+                </button>
+              </div>
+              
+              {selectedNews.image && (
+                <div className="mb-6">
+                  <img
+                    src={selectedNews.image}
+                    alt={selectedNews.title}
+                    className="w-full h-auto rounded-lg"
+                  />
+                </div>
+              )}
+              
+              <div className="prose max-w-none">
+                <p className="text-gray-700 whitespace-pre-wrap">{selectedNews.content}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
