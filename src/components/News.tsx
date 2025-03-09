@@ -38,11 +38,29 @@ export function News() {
               <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
                 <div className="md:flex">
                   <div className="md:flex-shrink-0">
-                    <img
-                      className="h-48 w-full md:w-48 object-cover"
-                      src={item.image || 'https://placehold.co/600x400/e2e8f0/1e293b?text=No+Image'}
-                      alt={item.title}
-                    />
+                    {item.image ? (
+                      <img
+                        className="h-48 w-full md:w-48 object-cover"
+                        src={item.image}
+                        alt={item.title}
+                      />
+                    ) : (
+                      <div
+                        className="h-48 w-full md:w-48 flex items-center justify-center bg-gradient-to-r from-blue-100 to-indigo-100"
+                        style={{
+                          // タイトルに基づいて色を変える（簡易的なハッシュ関数）
+                          background: `linear-gradient(135deg,
+                            hsl(${item.title.length * 10 % 360}, 70%, 85%),
+                            hsl(${(item.title.length * 20 + 40) % 360}, 70%, 85%))`
+                        }}
+                      >
+                        <div className="text-center p-4">
+                          <div className="text-2xl font-bold text-white" style={{ textShadow: '1px 1px 3px rgba(0,0,0,0.3)' }}>
+                            {item.title.substring(0, 1)}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <div className="p-6">
                     <p className="text-sm text-gray-500 mb-1">{item.date}</p>
