@@ -39,9 +39,9 @@ export function Hero() {
         </div>
       </div>
       
-      {/* 右下に配置する丸形の先生の写真 */}
-      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10">
-        <div className="w-40 h-40 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl">
+      {/* 先生の写真 - モバイルでは上部に、PCでは右側に大きく配置 */}
+      <div className="absolute top-8 right-8 md:top-1/2 md:right-12 md:transform md:-translate-y-1/2 z-10">
+        <div className="w-32 h-32 md:w-128 md:h-128 rounded-full overflow-hidden border-4 border-white shadow-xl">
           <img
             src={teachersImageUrl}
             alt="エリザベス外国語研究所の先生方"
