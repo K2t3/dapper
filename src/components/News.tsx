@@ -4,24 +4,14 @@ import { X } from 'lucide-react';
 
 export function News() {
   // 本文を制限するヘルパー関数
-  const truncateContent = (content: string, maxSentences = 2) => {
-    // 文の区切り文字（。!?）で分割
-    const sentences = content.match(/[^。!?]+[。!?]+/g) || [content];
-    
-    // 指定された文数以下の場合はそのまま返す
-    if (sentences.length <= maxSentences) {
+  const truncateContent = (content: string) => {
+    // 38文字以下の場合はそのまま返す
+    if (content.length <= 38) {
       return content;
     }
     
-    // 指定された文数まで結合
-    const truncated = sentences.slice(0, maxSentences).join('');
-    
-    // 文字数が少なすぎる場合は、文字数で制限（約100文字）
-    if (truncated.length < 100 && content.length > 150) {
-      return content.substring(0, 100) + '...';
-    }
-    
-    return truncated + '...';
+    // 38文字で切り取り、「...」を追加
+    return content.substring(0, 38) + '...';
   };
   const [newsItems, setNewsItems] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -88,8 +78,6 @@ export function News() {
                     <p className="text-sm text-gray-500 mb-1">{item.date}</p>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
                     <p className="text-gray-600">{truncateContent(item.content)}</p>
-                    {/* デバッグ情報を表示 */}
-                    <p className="text-xs text-gray-400">Content length: {item.content?.length || 0}</p>
                     <button
                       onClick={() => setSelectedNews(item)}
                       className="mt-4 text-blue-600 hover:text-blue-800 transition-colors"
