@@ -67,9 +67,9 @@ export function ContactForm() {
         <form
           name="contact"
           method="POST"
-          action="/"
           data-netlify="true"
           netlify-honeypot="bot-field"
+          action="/success"
           onSubmit={handleSubmit}
           className="bg-white p-6 rounded-lg shadow-md space-y-6"
         >
