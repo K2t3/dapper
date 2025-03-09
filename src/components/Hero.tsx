@@ -21,7 +21,7 @@ export function Hero() {
       />
       
       {/* 明るい色彩のグラデーションオーバーレイ */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-indigo-500/20">
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/40 to-indigo-500/30">
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
@@ -41,7 +41,7 @@ export function Hero() {
       
       {/* 右下に配置する丸形の先生の写真 */}
       <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10">
-        <div className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white shadow-xl">
+        <div className="w-40 h-40 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white shadow-xl">
           <img
             src={teachersImageUrl}
             alt="エリザベス外国語研究所の先生方"
