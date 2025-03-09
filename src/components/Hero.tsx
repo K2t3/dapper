@@ -25,13 +25,14 @@ export function Hero() {
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl text-white">
             <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
-              家族のような暖かい雰囲気で<br />
-              英語を学びませんか？
+              <span className="text-yellow-300">37年</span>の実績と信頼のエリザベス<br />
+              学び、成長するあなたとともに。<br />
+              <span className="text-blue-300">子どもから大人まで大歓迎です。</span>
             </h2>
             <a
               href="#contact"
               onClick={scrollToContact}
-              className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg"
+              className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg mt-6"
             >
               体験レッスンを予約する
             </a>
