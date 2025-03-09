@@ -55,7 +55,7 @@ export function Mission() {
         {/* Achievement Showcase */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-16">
           <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">
-            35年の実績が証明する確かな教育力
+            37年の実績が証明する確かな教育力
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center p-6 border-r border-gray-100 last:border-0">
@@ -121,7 +121,7 @@ export function Mission() {
               <div className="text-sm text-gray-600">
                 筑後地方の学校での指導実績
                 <br />
-                地域に根差した35年の歴史
+                地域に根差した37年の歴史
               </div>
             </div>
           </div>
