@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Star, Users, GraduationCap, Award, Globe, BookOpen } from 'lucide-react';
+import { Heart, Star, Award, Globe, BookOpen } from 'lucide-react';
 
 export function Mission() {
   return (
