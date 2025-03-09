@@ -40,7 +40,7 @@ export function News() {
                   <div className="md:flex-shrink-0">
                     <img
                       className="h-48 w-full md:w-48 object-cover"
-                      src={item.image}
+                      src={item.image || 'https://placehold.co/600x400/e2e8f0/1e293b?text=No+Image'}
                       alt={item.title}
                     />
                   </div>

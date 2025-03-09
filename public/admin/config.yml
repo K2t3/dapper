@@ -24,7 +24,7 @@ collections:
       - {label: "日付", name: "date", widget: "datetime", format: "YYYY年MM月DD日", date_format: "YYYY年MM月DD日", time_format: false}
       - {label: "タイトル", name: "title", widget: "string"}
       - {label: "内容", name: "content", widget: "text"}
-      - {label: "画像", name: "image", widget: "image"}
+      - {label: "画像", name: "image", widget: "image", required: false, hint: "画像は任意です。設定しない場合はデフォルト画像が使用されます。"}
       - {label: "公開", name: "published", widget: "boolean", default: true}
 
   - name: "gallery" # APIで使用する名前
