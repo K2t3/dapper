@@ -88,6 +88,8 @@ export function News() {
                     <p className="text-sm text-gray-500 mb-1">{item.date}</p>
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
                     <p className="text-gray-600">{truncateContent(item.content)}</p>
+                    {/* デバッグ情報を表示 */}
+                    <p className="text-xs text-gray-400">Content length: {item.content?.length || 0}</p>
                     <button
                       onClick={() => setSelectedNews(item)}
                       className="mt-4 text-blue-600 hover:text-blue-800 transition-colors"
