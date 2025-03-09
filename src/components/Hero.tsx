@@ -24,10 +24,10 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-blue-500/40 to-indigo-500/30">
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="max-w-2xl text-white">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
-              <div className="mb-1"><span className="text-yellow-300">37年</span>の実績と信頼のエリザベス</div>
-              <div className="mb-1">学び、成長するあなたとともに。</div>
-              <div><span className="text-blue-300">子どもから大人まで大歓迎です。</span></div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-none" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+              <div className="inline-block mb-0.5"><span className="text-yellow-300">37年</span>の実績と信頼のエリザベス</div>
+              <div className="inline-block mb-0.5">学び、成長するあなたとともに。</div>
+              <div className="inline-block"><span className="text-blue-300">子どもから大人まで大歓迎です。</span></div>
             </h2>
             <div className="flex flex-col sm:flex-row items-center mt-6">
               <a
