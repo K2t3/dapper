@@ -1,8 +1,10 @@
 import React from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { siteConfig } from '../config/siteConfig';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 export function Profile() {
+  const isMobile = useIsMobile();
   const scrollToContact = () => {
     const contactForm = document.getElementById('contact');
     if (contactForm) {
@@ -41,13 +43,20 @@ export function Profile() {
           <Mail className="h-5 w-5" />
           <span>お問い合わせフォーム</span>
         </button>
-        <a 
-          href={`tel:${siteConfig.contact.phone}`}
-          className="flex items-center justify-center space-x-2 px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors whitespace-nowrap"
-        >
-          <Phone className="h-5 w-5" />
-          <span>{siteConfig.contact.phone}</span>
-        </a>
+        {isMobile ? (
+          <a
+            href={`tel:${siteConfig.contact.phone}`}
+            className="flex items-center justify-center space-x-2 px-8 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors whitespace-nowrap"
+          >
+            <Phone className="h-5 w-5" />
+            <span>{siteConfig.contact.phone}</span>
+          </a>
+        ) : (
+          <div className="flex items-center justify-center space-x-2 px-8 py-3 bg-red-600 text-white rounded-lg whitespace-nowrap">
+            <Phone className="h-5 w-5" />
+            <span>{siteConfig.contact.phone}</span>
+          </div>
+        )}
       </div>
     </section>
   );
