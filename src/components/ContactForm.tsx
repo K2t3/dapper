@@ -4,7 +4,7 @@ import { Send } from 'lucide-react';
 export function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
-    contact: '',
+    email: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,7 +30,7 @@ export function ContactForm() {
         .then(() => {
           // 成功時の処理
           setFormStatus('success');
-          setFormData({ name: '', contact: '', message: '' });
+          setFormData({ name: '', email: '', message: '' });
         })
         .catch(error => {
           // エラー時の処理
@@ -91,16 +91,16 @@ export function ContactForm() {
           </div>
           
           <div>
-            <label htmlFor="contact" className="block text-sm font-medium text-gray-700 mb-1">
-              ご連絡先（メールアドレスまたは電話番号） <span className="text-red-500">*</span>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              メールアドレス <span className="text-red-500">*</span>
             </label>
             <input
-              type="text"
-              id="contact"
-              name="contact"
+              type="email"
+              id="email"
+              name="email"
               required
-              value={formData.contact}
-              onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
