@@ -16,9 +16,12 @@ export function Hero() {
               家族のような暖かい雰囲気で<br />
               英語を学びませんか？
             </h2>
-            <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg text-lg transition-colors duration-300">
+            <a
+              href="#contact"
+              className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg text-lg transition-colors duration-300"
+            >
               体験レッスンを予約する
-            </button>
+            </a>
           </div>
         </div>
       </div>
