@@ -128,9 +128,12 @@ export function Mission() {
         </div>
 
         {/* Closing Message */}
-        <div className="text-center mt-12">
-          <p className="text-lg text-blue-600 font-medium">
-            一緒に学びの喜びを感じましょう
+        <div className="text-center mt-12 py-6">
+          <p className="text-xl md:text-2xl font-bold text-blue-700 tracking-wide mb-2">
+            Unlocking Potential, Opening Worlds.
+          </p>
+          <p className="text-lg text-gray-700 font-medium tracking-wider">
+            無限の可能性、新たな世界への扉がきっと。
           </p>
         </div>
       </div>
