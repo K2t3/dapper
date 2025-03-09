@@ -29,20 +29,32 @@ export function Hero() {
               学び、成長するあなたとともに。<br />
               <span className="text-blue-300">子どもから大人まで大歓迎です。</span>
             </h2>
-            <a
-              href="#contact"
-              onClick={scrollToContact}
-              className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg mt-6"
-            >
-              体験レッスンを予約する
-            </a>
+            <div className="flex items-center mt-6">
+              <a
+                href="#contact"
+                onClick={scrollToContact}
+                className="inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg"
+              >
+                体験レッスン予約
+              </a>
+              {/* モバイル版の先生の写真 - ボタンの右側に配置（PC版では非表示） */}
+              <div className="md:hidden ml-4">
+                <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-lg">
+                  <img
+                    src={teachersImageUrl}
+                    alt="エリザベス外国語研究所の先生方"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* 先生の写真 - モバイルでは上部に、PCでは右側に大きく配置 */}
-      <div className="absolute top-8 right-8 md:top-1/2 md:right-12 md:transform md:-translate-y-1/2 z-10">
-        <div className="w-32 h-32 md:w-128 md:h-128 rounded-full overflow-hidden border-4 border-white shadow-xl">
+      {/* PC版の先生の写真 - 右側に大きく配置（モバイルでは非表示） */}
+      <div className="hidden md:block absolute top-1/2 right-12 transform -translate-y-1/2 z-10">
+        <div className="w-128 h-128 rounded-full overflow-hidden border-4 border-white shadow-xl">
           <img
             src={teachersImageUrl}
             alt="エリザベス外国語研究所の先生方"
