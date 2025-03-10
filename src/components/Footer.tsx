@@ -21,7 +21,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="text-xl font-bold mb-4">アクセス</h2>
+            <h2 className="text-xl font-bold mb-4">当塾について</h2>
             <p className="mb-2">広川町で創業から37年。各生徒の個性やモチベーションに合わせたコーチングが特徴で、短期間での英検合格、留学サポート実績も豊富です。</p>
           </div>
         </div>
