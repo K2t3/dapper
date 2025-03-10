@@ -19,6 +19,15 @@ export interface GalleryItem {
   published?: boolean;
 }
 
+// ブログ記事の型定義
+export interface BlogPost {
+  title: string;
+  date: string;
+  content: string;
+  slug: string;
+  published?: boolean;
+}
+
 /**
  * ニュースアイテムを取得する関数
  * 本番環境では、ビルド時に生成されたJSONファイルを読み込む
@@ -114,6 +123,45 @@ function getDefaultGalleryItems(): GalleryItem[] {
       title: '個別指導の様子',
       url: '/teachers.jpg',
       alt: '個別指導の様子'
+    }
+  ];
+}
+
+/**
+ * ブログ記事を取得する関数
+ * 本番環境では、ビルド時に生成されたJSONファイルを読み込む
+ * 開発環境では、ハードコードされたデータを返す
+ */
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  // 本番環境では、ビルド時に生成されたJSONファイルを読み込む
+  if (import.meta.env.PROD) {
+    try {
+      const response = await fetch('/admin/content/blog.json');
+      if (!response.ok) {
+        throw new Error('Failed to fetch blog data');
+      }
+      const data = await response.json();
+      return data.filter((item: BlogPost) => item.published !== false);
+    } catch (error) {
+      console.error('Error fetching blog data:', error);
+      return getDefaultBlogPosts();
+    }
+  }
+  
+  // 開発環境では、ハードコードされたデータを返す
+  return getDefaultBlogPosts();
+}
+
+/**
+ * デフォルトのブログ記事を返す関数
+ */
+function getDefaultBlogPosts(): BlogPost[] {
+  return [
+    {
+      title: 'はじめてのブログ投稿',
+      date: '2025年3月10日',
+      content: 'これは「エリザベス外国語研究所」のブログ最初の投稿です。このブログでは、英語学習のコツや、語学に関する豆知識、留学情報など、様々な話題について投稿していきます。\n\n## 英語学習のコツ\n\n英語を効果的に学ぶためには、継続的な学習が大切です。毎日少しずつでも英語に触れる時間を作りましょう。\n\n## 今後の予定\n\n今後は以下のようなトピックについて投稿していく予定です：\n\n- 英単語を効率的に覚えるコツ\n- リスニング力を向上させる方法\n- 英検対策のポイント\n- 海外留学体験談\n\nどうぞお楽しみに！',
+      slug: 'first-blog-post'
     }
   ];
 }

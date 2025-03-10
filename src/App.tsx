@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Profile } from './components/Profile';
@@ -10,6 +11,8 @@ import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { AdminPage } from './pages/admin/AdminPage';
+import { BlogPage } from './pages/BlogPage';
+import { BlogPostPage } from './pages/BlogPostPage';
 
 function App() {
   const [isAdminMode, setIsAdminMode] = useState(false);
@@ -54,21 +57,31 @@ function App() {
     return <AdminPage />;
   }
 
+  // メインのルーティング
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <Hero />
-      <main className="flex-grow">
-        <Profile />
-        <Mission />
-        <Pricing />
-        <Gallery />
-        <News />
-        <ContactForm />
-      </main>
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/" element={
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <Hero />
+            <main className="flex-grow">
+              <Profile />
+              <Mission />
+              <Pricing />
+              <Gallery />
+              <News />
+              <ContactForm />
+            </main>
+            <Footer />
+            <ScrollToTop />
+          </div>
+        } />
+      </Routes>
+    </Router>
   );
 }
 

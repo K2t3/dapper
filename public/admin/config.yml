@@ -37,3 +37,15 @@ collections:
       - {label: "画像", name: "url", widget: "image"}
       - {label: "代替テキスト", name: "alt", widget: "string"}
       - {label: "公開", name: "published", widget: "boolean", default: true}
+
+  - name: "blog" # APIで使用する名前
+    label: "ブログ" # 管理画面に表示される名前
+    folder: "content/blog" # コンテンツが保存されるフォルダ
+    create: true # 新しいエントリの作成を許可
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # ファイル名のパターン
+    fields: # フィールドの定義
+      - {label: "タイトル", name: "title", widget: "string"}
+      - {label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY年MM月DD日", time_format: false}
+      - {label: "内容", name: "content", widget: "markdown"}
+      - {label: "スラッグ", name: "slug", widget: "string", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "英数字とハイフンのみ使用可能"]}
+      - {label: "公開", name: "published", widget: "boolean", default: true}

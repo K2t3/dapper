@@ -38,13 +38,18 @@ function convertMarkdownToJson(dir, outputFile) {
   const items = files.map(file => {
     const filePath = path.join(fullDir, file);
     const fileContent = fs.readFileSync(filePath, 'utf8');
-    const { data } = matter(fileContent);
+    const { data, content } = matter(fileContent);
     
     // ファイル名から日付を抽出（オプション）
     if (!data.date && file.match(/^\d{4}-\d{2}-\d{2}/)) {
       const dateStr = file.match(/^(\d{4}-\d{2}-\d{2})/)[1];
       const [year, month, day] = dateStr.split('-');
       data.date = `${year}年${month}月${day}日`;
+    }
+    
+    // ブログ記事の場合、コンテンツも含める
+    if (dir === 'blog') {
+      return { ...data, content };
     }
     
     return data;
@@ -59,8 +64,9 @@ function convertMarkdownToJson(dir, outputFile) {
   console.log(`Converted ${items.length} ${dir} items to ${outputFile}`);
 }
 
-// ニュースとギャラリーのコンテンツを変換
+// ニュース、ギャラリー、ブログのコンテンツを変換
 convertMarkdownToJson('news', 'news.json');
 convertMarkdownToJson('gallery', 'gallery.json');
+convertMarkdownToJson('blog', 'blog.json');
 
 console.log('Content build completed!');

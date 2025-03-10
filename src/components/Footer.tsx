@@ -27,6 +27,9 @@ export function Footer() {
         </div>
         <div className="border-t border-gray-700 pt-6 text-center">
           <p>&copy; {new Date().getFullYear()} エリザベス外国語研究所. All rights reserved.</p>
+          <p className="mt-2 text-xs text-gray-500">
+            <a href="/blog" className="hover:text-gray-400 transition-colors">ブログ</a>
+          </p>
         </div>
       </div>
     </footer>
