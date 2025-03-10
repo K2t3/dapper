@@ -46,6 +46,6 @@ collections:
     fields: # フィールドの定義
       - {label: "タイトル", name: "title", widget: "string"}
       - {label: "日付", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY年MM月DD日", time_format: false}
-      - {label: "内容", name: "content", widget: "markdown"}
-      - {label: "スラッグ", name: "slug", widget: "string", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "英数字とハイフンのみ使用可能"]}
+      - {label: "内容", name: "content", widget: "text", hint: "ブログ記事の内容を入力してください。改行は自動的に段落として認識されます。"}
+      - {label: "スラッグ", name: "slug", widget: "string", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "英数字とハイフンのみ使用可能"], hint: "URLの一部として使用される識別子です。英数字とハイフンのみ使用可能です（例：my-first-post）"}
       - {label: "公開", name: "published", widget: "boolean", default: true}
