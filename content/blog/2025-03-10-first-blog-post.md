@@ -1,6 +1,8 @@
 ---
 title: はじめてのブログ投稿
 date: 2025-03-10
+content: このウェブサイトでの初めてのブログ投稿です。
+slug: my-first-post
 published: true
 ---
 
