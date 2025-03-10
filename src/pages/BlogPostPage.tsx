@@ -4,7 +4,6 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { ScrollToTop } from '../components/ScrollToTop';
 import { BlogPost, getBlogPosts } from '../utils/content';
-import ReactMarkdown from 'react-markdown';
 
 export function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
@@ -54,7 +53,9 @@ export function BlogPostPage() {
                 <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
                 <p className="text-gray-500 mb-6">{post.date}</p>
                 <div className="prose prose-lg max-w-none">
-                  <ReactMarkdown>{post.content}</ReactMarkdown>
+                  {post.content.split('\n\n').map((paragraph, index) => (
+                    <p key={index} className="mb-4">{paragraph}</p>
+                  ))}
                 </div>
                 <div className="mt-8 pt-6 border-t border-gray-200">
                   <a href="/blog" className="text-blue-500 hover:text-blue-700">
